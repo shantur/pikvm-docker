@@ -1,0 +1,18 @@
+[Unit]
+Description=Pi-KVM - The main daemon
+
+[Service]
+User=kvmd
+Group=kvmd
+Type=simple
+Restart=always
+RestartSec=3
+AmbientCapabilities=CAP_NET_RAW
+
+ExecStart=/usr/bin/kvmd --run
+ExecStopPost=/usr/bin/kvmd-cleanup --run
+TimeoutStopSec=10
+KillMode=mixed
+
+[Install]
+WantedBy=container.target

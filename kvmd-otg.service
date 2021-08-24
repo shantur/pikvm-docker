@@ -1,0 +1,12 @@
+[Unit]
+Description=Pi-KVM - OTG setup
+Before=kvmd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/kvmd-otg start
+ExecStop=/usr/bin/kvmd-otg stop
+RemainAfterExit=true
+
+[Install]
+WantedBy=container.target
